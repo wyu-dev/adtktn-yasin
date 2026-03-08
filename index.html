@@ -593,7 +593,7 @@ body.light-mode header {
   </div>
 </div>
 
-<button class="jump-top" id="jumpTop" onclick="scrollTop()">↑</button>
+<button class="jump-top" id="jumpTop" onclick="goToTop()">↑</button>
 
 <div class="footer">
   ADTEC JTM Kampus Kuantan &nbsp;•&nbsp; Surah Yasin v1.0
@@ -749,7 +749,7 @@ function showTab(tab) {
   document.getElementById('doaSection').classList.toggle('active', tab === 'doa');
 }
 
-function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function goToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 // ── SCROLL EFFECTS ──
 window.addEventListener('scroll', () => {
