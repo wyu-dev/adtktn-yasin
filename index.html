@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ms" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a1628">
+<meta name="description" content="Surah Yasin - ADTEC JTM Kuantan">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Surah Yasin — ADTEC Kuantan</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --navy-mid: #112240;
+  --navy-light: #1a3356;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-pale: #f5e6b8;
+  --cream: #fdf6e3;
+  --white: #ffffff;
+  --text-main: #e8dcc8;
+  --text-muted: #9ba8b5;
+  --text-arabic: #f5e6b8;
+  --border: rgba(201,168,76,0.2);
+  --glow: rgba(201,168,76,0.15);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--navy);
+  color: var(--text-main);
+  font-family: 'Crimson Pro', Georgia, serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── GEOMETRIC BACKGROUND ── */
+body::before {
+  content:'';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,168,76,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(17,34,64,0.8) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.geo-pattern {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%),
+    repeating-linear-gradient(-45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+  background-size: 30px 30px;
+}
+
+/* ── HEADER ── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,22,40,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+}
+
+.header-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  gap: 12px;
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  line-height: 1.2;
+}
+
+.logo-text .inst {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+}
+
+.logo-text .name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.header-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.ctrl-btn {
+  background: rgba(201,168,76,0.1);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Crimson Pro', serif;
+  letter-spacing: 0.5px;
+}
+
+.ctrl-btn:hover, .ctrl-btn.active {
+  background: rgba(201,168,76,0.25);
+  border-color: var(--gold);
+}
+
+/* ── HERO BANNER ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 48px 20px 36px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero-surah-num {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--border);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.hero-arabic-title {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(42px, 10vw, 72px);
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 8px;
+  text-shadow: 0 0 40px rgba(201,168,76,0.3);
+}
+
+.hero-rumi-title {
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 16px;
+}
+
+.hero-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.bismillah-block {
+  margin: 0 auto 36px;
+  max-width: 700px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.bismillah-inner {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.04));
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.bismillah-arabic {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(24px, 6vw, 38px);
+  color: var(--gold-light);
+  line-height: 1.6;
+  direction: rtl;
+  margin-bottom: 8px;
+}
+
+.bismillah-trans {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── TABS ── */
+.tabs {
+  max-width: 700px;
+  margin: 0 auto 24px;
+  padding: 0 20px;
+  display: flex;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s;
+  font-family: 'Crimson Pro', serif;
+}
+
+.tab-btn.active {
+  background: rgba(201,168,76,0.15);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+/* ── AYAT LIST ── */
+.ayat-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.ayat-card {
+  background: rgba(17,34,64,0.5);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 14px;
+  padding: 24px 20px 20px;
+  margin-bottom: 14px;
+  transition: all 0.3s;
+  animation: fadeUp 0.4s ease both;
+}
+
+.ayat-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  background: rgba(17,34,64,0.7);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+.ayat-card.highlight {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  box-shadow: 0 0 20px rgba(201,168,76,0.12);
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(16px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+.ayat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.ayat-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.08));
+  border: 1px solid rgba(201,168,76,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.ayat-bookmark {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.2s;
+  padding: 4px;
+}
+.ayat-bookmark:hover, .ayat-bookmark.saved { color: var(--gold); }
+
+.ayat-arabic {
+  font-family: 'Scheherazade New', 'Noto Naskh Arabic', serif;
+  font-size: clamp(22px, 5vw, 32px);
+  line-height: 2;
+  text-align: right;
+  direction: rtl;
+  color: var(--text-arabic);
+  margin-bottom: 14px;
+  word-spacing: 4px;
+}
+
+.ayat-rumi {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.ayat-rumi.hidden { display: none; }
+
+.ayat-trans {
+  font-size: 15px;
+  color: var(--text-main);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ── DOA SECTION ── */
+.doa-section {
+  display: none;
+}
+
+.doa-section.active {
+  display: block;
+}
+
+.doa-card {
+  background: rgba(17,34,64,0.5);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 14px;
+  padding: 28px 20px;
+  margin-bottom: 16px;
+  animation: fadeUp 0.4s ease;
+}
+
+.doa-title {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.doa-arabic {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(20px, 4.5vw, 28px);
+  line-height: 2;
+  text-align: right;
+  direction: rtl;
+  color: var(--text-arabic);
+  margin-bottom: 14px;
+}
+
+.doa-rumi {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.doa-trans {
+  font-size: 14px;
+  color: var(--text-main);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  z-index: 200;
+  transition: width 0.1s;
+  box-shadow: 0 0 8px var(--gold);
+}
+
+/* ── JUMP BUTTON ── */
+.jump-top {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 50%;
+  border: none;
+  color: var(--navy);
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(201,168,76,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s;
+  z-index: 90;
+}
+
+.jump-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── LOADING ── */
+#loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(201,168,76,0.2);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── DARK LIGHT TOGGLE ── */
+body.light-mode {
+  --navy: #f5f0e8;
+  --navy-mid: #ede5d0;
+  --navy-light: #e0d4b8;
+  --text-main: #2c2416;
+  --text-muted: #6b5f4a;
+  --text-arabic: #1a1208;
+  --border: rgba(139,100,30,0.2);
+  --glow: rgba(139,100,30,0.1);
+}
+
+body.light-mode .ayat-card,
+body.light-mode .doa-card {
+  background: rgba(255,255,255,0.7);
+}
+
+body.light-mode header {
+  background: rgba(245,240,232,0.95);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 480px) {
+  .header-inner { padding: 10px 0; }
+  .logo-text .inst { font-size: 8px; }
+  .logo-text .name { font-size: 12px; }
+  .ayat-arabic { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="geo-pattern"></div>
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-icon">🕌</div>
+      <div class="logo-text">
+        <div class="inst">ADTEC JTM Kuantan</div>
+        <div class="name">Surah Yasin</div>
+      </div>
+    </div>
+    <div class="header-controls">
+      <button class="ctrl-btn" id="rumiToggle" onclick="toggleRumi()">Rumi</button>
+      <button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()">☀</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-surah-num">Surah ke-36 • 83 Ayat • Makkiyyah</div>
+  <div class="hero-arabic-title">يٰسٓ</div>
+  <div class="hero-rumi-title">Yaa Siin</div>
+  <div class="hero-divider"></div>
+  <div class="hero-meta">Jantung Al-Quran — Hati orang mukmin</div>
+</div>
+
+<!-- BISMILLAH -->
+<div class="bismillah-block">
+  <div class="bismillah-inner">
+    <div class="bismillah-arabic">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+    <div class="bismillah-trans">Dengan nama Allah, Yang Maha Pemurah, lagi Maha Mengasihani</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('yasin')">📖 Surah Yasin</button>
+  <button class="tab-btn" onclick="showTab('doa')">🤲 Doa Selepas Yasin</button>
+</div>
+
+<!-- AYAT CONTAINER -->
+<div class="ayat-container">
+  <div id="loading">
+    <div class="spinner"></div>
+    <div>Memuatkan ayat-ayat...</div>
+  </div>
+  <div id="ayatList"></div>
+
+  <!-- DOA SECTION -->
+  <div id="doaSection" class="doa-section">
+    <div class="doa-card">
+      <div class="doa-title">Doa Selepas Yasin</div>
+      <div class="doa-arabic">اَللّٰهُمَّ يَا مَنْ لَا يَمْنَعُ ثَوَابَهُ بَعْدَ الْمَوْتِ وَلَا يَتَغَيَّرُ مُلْكُهُ، اِحْرِسْنَا بِحِرْسِ إِيمَانِهِ وَبَلِّغْنَا إِلَى مَا نُحِبُّ وَنَرْضَى</div>
+      <div class="doa-rumi">Allāhumma yā man lā yamna'u thawābahu ba'dal mauti wa lā yataghayyaru mulkuh, ihrisnā bihirsi imānih wa ballighna ilā mā nuhibbu wa nardhā</div>
+      <div class="doa-trans">Ya Allah, wahai Tuhan yang tidak menahan pahala-Nya selepas kematian dan tidak berubah kerajaan-Nya, peliharalah kami dengan penjagaan iman-Nya dan sampaikanlah kami kepada apa yang kami sukai dan kami redai.</div>
+    </div>
+    <div class="doa-card">
+      <div class="doa-arabic">اَللّٰهُمَّ تَقَبَّلْ مِنَّا مَا قَرَأْنَاهُ مِنْ سُورَةِ يٰسٓ وَتَقَبَّلْ مِنَّا صِيَامَنَا وَقِيَامَنَا وَرُكُوعَنَا وَسُجُودَنَا</div>
+      <div class="doa-rumi">Allāhumma taqabbal minnā mā qara'nāhu min sūrati Yāsīn wa taqabbal minnā siyāmanā wa qiyāmanā wa rukū'anā wa sujūdanā</div>
+      <div class="doa-trans">Ya Allah, terimalah dari kami apa yang telah kami baca dari Surah Yasin dan terimalah dari kami puasa kami, qiam kami, rukuk kami dan sujud kami.</div>
+    </div>
+    <div class="doa-card">
+      <div class="doa-arabic">اَللّٰهُمَّ اغْفِرْ لَنَا وَلِوَالِدَيْنَا وَلِأُسْتَاذِنَا وَلِجَمِيعِ الْمُسْلِمِيْنَ وَالْمُسْلِمَاتِ وَالْمُؤْمِنِيْنَ وَالْمُؤْمِنَاتِ الأَحْيَاءِ مِنْهُمْ وَالأَمْوَاتِ</div>
+      <div class="doa-rumi">Allāhummaghfir lanā wa liwālidainā wa li ustādzinā wa lijamī'il muslimīna wal muslimāt wal mu'minīna wal mu'mināt, al-ahyā'i minhum wal amwāt</div>
+      <div class="doa-trans">Ya Allah, ampunilah kami, ibu bapa kami, guru-guru kami, dan semua orang Islam lelaki dan perempuan, yang beriman lelaki dan perempuan, yang masih hidup dan yang telah meninggal dunia.</div>
+    </div>
+    <div class="doa-card">
+      <div class="doa-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+      <div class="doa-rumi">Rabbanā ātinā fid-dunyā hasanah, wa fil ākhirati hasanah, waqinā 'adzāban-nār</div>
+      <div class="doa-trans">Wahai Tuhan kami, berikanlah kami kebaikan di dunia dan kebaikan di akhirat, dan peliharalah kami dari azab neraka.</div>
+    </div>
+    <div class="footer" style="margin-top:20px;">آمِيْن يَا رَبَّ الْعَالَمِيْن</div>
+  </div>
+</div>
+
+<button class="jump-top" id="jumpTop" onclick="scrollTop()">↑</button>
+
+<div class="footer">
+  ADTEC JTM Kampus Kuantan &nbsp;•&nbsp; Surah Yasin v1.0
+</div>
+
+<script>
+// ── DATA: Surah Yasin 83 Ayat ──
+const yasin = [
+  { ar: "يسٓ", rm: "Yā Sīn", tr: "Yaa, Siin." },
+  { ar: "وَٱلۡقُرۡءَانِ ٱلۡحَكِيمِ", rm: "Wal Qur'ānil ḥakīm", tr: "Demi Al-Quran yang penuh hikmah," },
+  { ar: "إِنَّكَ لَمِنَ ٱلۡمُرۡسَلِينَ", rm: "Innaka laminal mursalīn", tr: "Sesungguhnya engkau (wahai Muhammad) adalah dari Rasul-rasul yang telah diutus," },
+  { ar: "عَلَىٰ صِرَٰطٍۢ مُّسۡتَقِيمٍ", rm: "'Alā ṣirāṭim mustaqīm", tr: "Yang tetap di atas jalan yang lurus (ugama Islam)," },
+  { ar: "تَنزِيلَ ٱلۡعَزِيزِ ٱلرَّحِيمِ", rm: "Tanzīlal 'Azīzir Raḥīm", tr: "(Al-Quran ini) diturunkan oleh Allah Yang Maha Kuasa, lagi Maha Mengasihani;" },
+  { ar: "لِتُنذِرَ قَوۡمٗا مَّآ أُنذِرَ ءَابَآؤُهُمۡ فَهُمۡ غَٰفِلُونَ", rm: "Litunżira qaumam mā unżira ābā'uhum fa hum ghāfilūn", tr: "Supaya engkau memberi peringatan kepada kaum yang datuk neneknya tidak pernah diberikan peringatan; sebab itulah mereka lalai." },
+  { ar: "لَقَدۡ حَقَّ ٱلۡقَوۡلُ عَلَىٰٓ أَكۡثَرِهِمۡ فَهُمۡ لَا يُؤۡمِنُونَ", rm: "Laqad ḥaqqal-qaulu 'alā aktharihim fahum lā yu'minūn", tr: "Demi sesungguhnya, telah tetap hukuman ke atas kebanyakan mereka, kerana mereka tidak mahu beriman." },
+  { ar: "إِنَّا جَعَلۡنَا فِيٓ أَعۡنَٰقِهِمۡ أَغۡلَٰلٗا فَهِيَ إِلَى ٱلۡأَذۡقَانِ فَهُم مُّقۡمَحُونَ", rm: "Innā ja'alnā fī a'nāqihim aghlālan fahiya ilal-adzqāni fahum muqmaḥūn", tr: "Sesungguhnya Kami telah meletakkan belenggu di leher mereka, sehingga (kepala mereka terangkat) sampai ke dagu, lalu mereka dengan kepala yang terngadah." },
+  { ar: "وَجَعَلۡنَا مِنۢ بَيۡنِ أَيۡدِيهِمۡ سَدّٗا وَمِنۡ خَلۡفِهِمۡ سَدّٗا فَأَغۡشَيۡنَٰهُمۡ فَهُمۡ لَا يُبۡصِرُونَ", rm: "Wa ja'alnā mim baini aidīhim saddaw-wa min khalfihim saddan fa aghshaināhum fahum lā yubṣirūn", tr: "Dan Kami telah menjadikan di hadapan mereka sekatan dan di belakang mereka sekatan (daripada menerima kebenaran), lalu Kami tutupkan (pandangan) mereka maka mereka tidak dapat melihat." },
+  { ar: "وَسَوَآءٌ عَلَيۡهِمۡ ءَأَنذَرۡتَهُمۡ أَمۡ لَمۡ تُنذِرۡهُمۡ لَا يُؤۡمِنُونَ", rm: "Wa sawā'un 'alaihim 'a-anżartahum am lam tunżirhum lā yu'minūn", tr: "Dan adalah sama sahaja bagi mereka, sama ada engkau beri amaran kepada mereka atau engkau tidak beri amaran kepada mereka; mereka tidak akan beriman." },
+  { ar: "إِنَّمَا تُنذِرُ مَنِ ٱتَّبَعَ ٱلذِّكۡرَ وَخَشِيَ ٱلرَّحۡمَٰنَ بِٱلۡغَيۡبِۖ فَبَشِّرۡهُ بِمَغۡفِرَةٍۢ وَأَجۡرٍۢ كَرِيمٍ", rm: "Innamā tunżiru manit-taba'adh-dhikra wa khashiyar-Raḥmāna bil-ghaib, fa bashshirhu bimaghfiratiw-wa ajrin karīm", tr: "Sesungguhnya engkau hanya dapat memberi amaran kepada orang yang sudi menurut Al-Quran dan takut kepada Tuhan Yang Maha Pemurah semasa ia tidak dilihat orang; maka berilah berita gembira kepada orang itu dengan keampunan dan pahala yang mulia." },
+  { ar: "إِنَّا نَحۡنُ نُحۡيِ ٱلۡمَوۡتَىٰ وَنَكۡتُبُ مَا قَدَّمُواْ وَءَاثَٰرَهُمۡۚ وَكُلَّ شَيۡءٍ أَحۡصَيۡنَٰهُ فِيٓ إِمَامٍۢ مُّبِينٍ", rm: "Innā naḥnu nuḥyil-mawtā wa naktubu mā qaddamū wa āthārahum, wa kulla shai'in aḥṣaināhu fī imāmim mubīn", tr: "Sesungguhnya Kami menghidupkan orang-orang yang mati dan Kami menulis segala yang mereka kerjakan serta kesan-kesan perbuatan mereka; dan tiap-tiap sesuatu Kami catitkan satu persatu dalam Kitab Induk yang jelas nyata." },
+  { ar: "وَٱضۡرِبۡ لَهُم مَّثَلًا أَصۡحَٰبَ ٱلۡقَرۡيَةِ إِذۡ جَآءَهَا ٱلۡمُرۡسَلُونَ", rm: "Waḍrib lahum mathalān aṣḥābal-qaryah, idh jā'ahal-mursalūn", tr: "Dan kemukakanlah kepada mereka suatu misal perbandingan: penduduk sebuah bandar ketika utusan-utusan Allah datang kepada mereka;" },
+  { ar: "إِذۡ أَرۡسَلۡنَآ إِلَيۡهِمُ ٱثۡنَيۡنِ فَكَذَّبُوهُمَا فَعَزَّزۡنَا بِثَالِثٍۢ فَقَالُوٓاْ إِنَّآ إِلَيۡكُم مُّرۡسَلُونَ", rm: "Idh arsalnā ilaihimuthnayni fa-kadhdhabūhumā fa'azzaznā bithālithin faqālū innā ilaikum mursalūn", tr: "Ketika Kami mengutus kepada mereka dua orang Rasul, lalu mereka mendustakan keduanya, maka Kami kuatkan (keduanya) dengan seorang Rasul yang ketiga, lalu mereka berkata: Sesungguhnya kami ini adalah orang-orang yang telah diutuskan kepada kamu." },
+  { ar: "قَالُواْ مَآ أَنتُمۡ إِلَّا بَشَرٌ مِّثۡلُنَا وَمَآ أَنزَلَ ٱلرَّحۡمَٰنُ مِن شَيۡءٍ إِنۡ أَنتُمۡ إِلَّا تَكۡذِبُونَ", rm: "Qālū mā antum illā basharum mithlunā wa mā anzalar-Raḥmānu min shai'in in antum illā takdhibūn", tr: "Mereka (penduduk bandar itu) menjawab: Kamu ini tidak lain hanyalah manusia seperti kami juga; dan Allah Yang Maha Pemurah tidak pernah menurunkan sesuatu pun; kamu hanyalah berdusta semata-mata." },
+  { ar: "قَالُواْ رَبُّنَا يَعۡلَمُ إِنَّآ إِلَيۡكُمۡ لَمُرۡسَلُونَ", rm: "Qālū Rabbunā ya'lamu innā ilaikum lamursalūn", tr: "Utusan-utusan itu berkata: Tuhan kami mengetahui bahawa sesungguhnya kami ini adalah utusan-utusan yang diutuskan kepada kamu." },
+  { ar: "وَمَا عَلَيۡنَآ إِلَّا ٱلۡبَلَٰغُ ٱلۡمُبِينُ", rm: "Wa mā 'alainā illal-balāghul-mubīn", tr: "Dan tidaklah kewajipan kami melainkan menyampaikan (risalah itu) dengan jelas nyata." },
+  { ar: "قَالُوٓاْ إِنَّا تَطَيَّرۡنَا بِكُمۡۖ لَئِن لَّمۡ تَنتَهُواْ لَنَرۡجُمَنَّكُمۡ وَلَيَمَسَّنَّكُم مِّنَّا عَذَابٌ أَلِيمٌ", rm: "Qālū innā taṭayyarnā bikum, la'il-lam tantahū lanarjumannakum wa layamassannakum minnā 'adhābun alīm", tr: "Mereka (penduduk bandar itu) menjawab: Sesungguhnya kami menganggap kamu membawa kesialan kepada kami; demi sesungguhnya, jika kamu tidak berhenti (daripada menyebarkan ajaran itu), kami akan rajam kamu dan kamu akan dikenakan azab yang pedih dari kami." },
+  { ar: "قَالُواْ طَٰٓئِرُكُم مَّعَكُمۡۚ أَئِن ذُكِّرۡتُمۖ بَلۡ أَنتُمۡ قَوۡمٌ مُّسۡرِفُونَ", rm: "Qālū ṭā'irukum ma'akum, a'in dhukkirtum, bal antum qaumum musrifūn", tr: "Utusan-utusan itu berkata: Kesialan kamu itu adalah bersama kamu sendiri; apakah kamu menganggap (demikian) hanya kerana kamu diberi peringatan? Bahkan kamu adalah kaum yang melampau." },
+  { ar: "وَجَآءَ مِنۡ أَقۡصَا ٱلۡمَدِينَةِ رَجُلٌ يَسۡعَىٰ قَالَ يَٰقَوۡمِ ٱتَّبِعُواْ ٱلۡمُرۡسَلِينَ", rm: "Wa jā'a min aqṣal-madīnati rajuluy-yas'ā qāla yā qaumit-tabi'ul-mursalīn", tr: "Dan datanglah dari hujung bandar itu seorang lelaki dengan bergegas, berkata: Wahai kaumku! Ikutilah utusan-utusan itu." },
+  { ar: "ٱتَّبِعُواْ مَن لَّا يَسۡـَٔلُكُمۡ أَجۡرٗا وَهُم مُّهۡتَدُونَ", rm: "Ittabi'ū mal-lā yas'alukum ajraw-wa hum muhtadūn", tr: "Ikutilah orang-orang yang tidak meminta sebarang upah daripada kamu, sedang mereka adalah orang-orang yang mendapat petunjuk." },
+  { ar: "وَمَا لِيَ لَآ أَعۡبُدُ ٱلَّذِي فَطَرَنِي وَإِلَيۡهِ تُرۡجَعُونَ", rm: "Wa mā liya lā a'budulladhī faṭaranī wa ilaihi turja'ūn", tr: "Dan mengapa aku tidak menyembah Tuhan yang telah menciptakan aku, dan kepada-Nyalah kamu semua dikembalikan?" },
+  { ar: "ءَأَتَّخِذُ مِن دُونِهِۦٓ ءَالِهَةً إِن يُرِدۡنِ ٱلرَّحۡمَٰنُ بِضُرٍّۢ لَّا تُغۡنِ عَنِّي شَفَٰعَتُهُمۡ شَيۡـٔٗا وَلَا يُنقِذُونِ", rm: "A-attakhidhu min dūnihī ālihatan iy-yuridnir-Raḥmānu biḍurril-lā tughni 'anni shafā'atuhum shai'aw-wa lā yunqidhūn", tr: "Patutkah aku mengambil selain daripada-Nya sebagai tuhan-tuhan (yang disembah)? Jika Allah Yang Maha Pemurah menghendaki bahaya menimpaku, syafaat mereka tidak dapat menolong aku sedikit pun dan mereka tidak dapat melepaskan aku." },
+  { ar: "إِنِّيٓ إِذٗا لَّفِي ضَلَٰلٍۢ مُّبِينٍ", rm: "Innī idhal-lafī ḍalālim-mubīn", tr: "Sesungguhnya ketika itu aku berada dalam kesesatan yang nyata." },
+  { ar: "إِنِّيٓ ءَامَنتُ بِرَبِّكُمۡ فَٱسۡمَعُونِ", rm: "Innī āmantu birabbikum fasma'ūn", tr: "Sesungguhnya aku beriman kepada Tuhan kamu, maka dengarlah (pengakuan iman) ku." },
+  { ar: "قِيلَ ٱدۡخُلِ ٱلۡجَنَّةَۖ قَالَ يَٰلَيۡتَ قَوۡمِي يَعۡلَمُونَ", rm: "Qīladkhulil-jannah, qāla yā laita qaumī ya'lamūn", tr: "Dikatakan kepadanya: Masuklah ke dalam Syurga. Ia berkata: Alangkah baiknya jika kaumku mengetahui," },
+  { ar: "بِمَا غَفَرَ لِي رَبِّي وَجَعَلَنِي مِنَ ٱلۡمُكۡرَمِينَ", rm: "Bimā ghafara lī Rabbī wa ja'alanī minal-mukramīn", tr: "Dengan sebab apa yang telah diampunkan oleh Tuhanku bagiku, dan Ia telah menjadikan aku dari orang-orang yang dimuliakan." },
+  { ar: "وَمَآ أَنزَلۡنَا عَلَىٰ قَوۡمِهِۦ مِنۢ بَعۡدِهِۦ مِن جُندٍۢ مِّنَ ٱلسَّمَآءِ وَمَا كُنَّا مُنزِلِينَ", rm: "Wa mā anzalnā 'alā qaumihī mim ba'dihī min jundim minas-samā'i wa mā kunnā munzilīn", tr: "Dan Kami tidak menurunkan kepada kaumnya sesudah kematiannya sebarang tentera dari langit, dan Kami tidak akan menurunkannya." },
+  { ar: "إِن كَانَتۡ إِلَّا صَيۡحَةٗ وَٰحِدَةٗ فَإِذَا هُمۡ خَٰمِدُونَ", rm: "In kānat illā ṣaiḥataw-wāḥidatan fa-idhā hum khāmidūn", tr: "Ia tidak lain hanyalah satu jeritan sahaja, maka dengan serta-merta mereka pun matilah." },
+  { ar: "يَٰحَسۡرَةً عَلَى ٱلۡعِبَادِۚ مَا يَأۡتِيهِم مِّن رَّسُولٍ إِلَّا كَانُواْ بِهِۦ يَسۡتَهۡزِءُونَ", rm: "Yā ḥasratan 'alal-'ibād, mā ya'tīhim mir-Rasūlin illā kānū bihī yastahzi'ūn", tr: "Oh betapa menyesalnya manusia yang derhaka itu! Tidaklah datang kepada mereka seorang Rasul melainkan mereka selalu mengejek-ejeknya." },
+  { ar: "أَلَمۡ يَرَوۡاْ كَمۡ أَهۡلَكۡنَا قَبۡلَهُم مِّنَ ٱلۡقُرُونِ أَنَّهُمۡ إِلَيۡهِمۡ لَا يَرۡجِعُونَ", rm: "Alam yaraw kam ahlaknā qablahum minal-qurūn, annahum ilaihim lā yarji'ūn", tr: "Tidakkah mereka melihat berapa banyak umat-umat yang telah Kami binasakan sebelum mereka itu, bahawa sesungguhnya mereka (yang telah mati) itu tidak akan kembali lagi kepada mereka?" },
+  { ar: "وَإِن كُلٌّ لَّمَّا جَمِيعٌ لَّدَيۡنَا مُحۡضَرُونَ", rm: "Wa in kullul-lammā jamī'ul-ladainā muḥḍarūn", tr: "Dan tidak ada seorang pun melainkan semuanya akan dihadapkan kepada Kami." },
+  { ar: "وَءَايَةٌ لَّهُمُ ٱلۡأَرۡضُ ٱلۡمَيۡتَةُ أَحۡيَيۡنَٰهَا وَأَخۡرَجۡنَا مِنۡهَا حَبًّا فَمِنۡهُ يَأۡكُلُونَ", rm: "Wa āyatul-lahumul-arḍul-maitatu aḥyaināhā wa akhrajnā minhā ḥabbam-fa-minhu ya'kulūn", tr: "Dan satu tanda (kekuasaan Allah) bagi mereka ialah bumi yang mati (tandus), Kami hidupkan dia dan Kami keluarkan daripadanya biji-bijian, maka daripadanya mereka makan." },
+  { ar: "وَجَعَلۡنَا فِيهَا جَنَّٰتٍۢ مِّن نَّخِيلٍۢ وَأَعۡنَٰبٍۢ وَفَجَّرۡنَا فِيهَا مِنَ ٱلۡعُيُونِ", rm: "Wa ja'alnā fīhā jannātim-min nakhīliw-wa a'nābiw-wa fajjarnā fīhā minal-'uyūn", tr: "Dan Kami jadikan padanya kebun-kebun kurma dan anggur, dan Kami pancarkan padanya beberapa mata air;" },
+  { ar: "لِيَأۡكُلُواْ مِن ثَمَرِهِۦ وَمَا عَمِلَتۡهُ أَيۡدِيهِمۡۚ أَفَلَا يَشۡكُرُونَ", rm: "Liya'kulū min thamarihī wa mā 'amilat-hu aidīhim, afalā yashkurūn", tr: "Supaya mereka dapat makan dari buahnya dan dari apa yang dikerjakan oleh tangan mereka; maka mengapakah mereka tidak bersyukur?" },
+  { ar: "سُبۡحَٰنَ ٱلَّذِي خَلَقَ ٱلۡأَزۡوَٰجَ كُلَّهَا مِمَّا تُنۢبِتُ ٱلۡأَرۡضُ وَمِنۡ أَنفُسِهِمۡ وَمِمَّا لَا يَعۡلَمُونَ", rm: "Subḥānalladhī khalaqal-azwāja kullahā mimmā tumbitul-arḍu wa min anfusihim wa mimmā lā ya'lamūn", tr: "Maha Suci Allah yang telah menciptakan segala pasangan; daripada apa yang ditumbuhkan oleh bumi dan daripada diri mereka, serta daripada apa yang mereka tidak ketahui." },
+  { ar: "وَءَايَةٌ لَّهُمُ ٱلَّيۡلُ نَسۡلَخُ مِنۡهُ ٱلنَّهَارَ فَإِذَا هُم مُّظۡلِمُونَ", rm: "Wa āyatul-lahumul-lailu naslakhu minhun-nahāra fa-idhā hum muẓlimūn", tr: "Dan satu tanda bagi mereka ialah malam; Kami hilangkan siang daripadanya maka mereka pun berada dalam gelap-gelita." },
+  { ar: "وَٱلشَّمۡسُ تَجۡرِي لِمُسۡتَقَرٍّۢ لَّهَاۚ ذَٰلِكَ تَقۡدِيرُ ٱلۡعَزِيزِ ٱلۡعَلِيمِ", rm: "Wash-shamsu tajrī limustaqarril-lahā, dhālika taqdīrul-'Azīzil-'Alīm", tr: "Dan matahari beredar ke tempat yang ditetapkan untuknya; yang demikian itu adalah ketentuan Allah Yang Maha Kuasa, lagi Maha Mengetahui." },
+  { ar: "وَٱلۡقَمَرَ قَدَّرۡنَٰهُ مَنَازِلَ حَتَّىٰ عَادَ كَٱلۡعُرۡجُونِ ٱلۡقَدِيمِ", rm: "Wal-qamara qaddarnāhu manāzila ḥattā 'āda kal-'urjūnil-qadīm", tr: "Dan bulan pula, Kami telah tentukan baginya peringkat-peringkat perjalanan; sehingga ia kembali (berbentuk) seperti tandan yang tua." },
+  { ar: "لَا ٱلشَّمۡسُ يَنۢبَغِي لَهَآ أَن تُدۡرِكَ ٱلۡقَمَرَ وَلَا ٱلَّيۡلُ سَابِقُ ٱلنَّهَارِۚ وَكُلٌّ فِي فَلَكٍۢ يَسۡبَحُونَ", rm: "Lash-shamsu yanbaghī lahā an tudrikal-qamar, wa lal-lailu sābiqun-nahār, wa kullun fī falakin yasbaḥūn", tr: "Tidaklah mungkin bagi matahari mengejar bulan, dan malam pun tidak dapat mendahului siang; dan masing-masing beredar pada garis edarnya." },
+  { ar: "وَءَايَةٌ لَّهُمۡ أَنَّا حَمَلۡنَا ذُرِّيَّتَهُمۡ فِي ٱلۡفُلۡكِ ٱلۡمَشۡحُونِ", rm: "Wa āyatul-lahum annā ḥamalnā dhurriyyatahum fil-fulkil-mashḥūn", tr: "Dan satu tanda bagi mereka ialah Kami angkut keturunan mereka dalam kapal yang sarat muatan." },
+  { ar: "وَخَلَقۡنَا لَهُم مِّن مِّثۡلِهِۦ مَا يَرۡكَبُونَ", rm: "Wa khalaqnā lahum mim-mithlihi mā yarkabūn", tr: "Dan Kami ciptakan untuk mereka (kenderaan-kenderaan) yang lain sepertinya untuk mereka menunggang." },
+  { ar: "وَإِن نَّشَأۡ نُغۡرِقۡهُمۡ فَلَا صَرِيخَ لَهُمۡ وَلَا هُمۡ يُنقَذُونَ", rm: "Wa in-nasha' nughriqhum falā ṣarīkha lahum wa lā hum yunqadhūn", tr: "Dan jika Kami kehendaki, nescaya Kami tenggelamkan mereka; maka tidak ada bagi mereka orang yang akan menolong, dan tidak pula mereka akan diselamatkan." },
+  { ar: "إِلَّا رَحۡمَةٗ مِّنَّا وَمَتَٰعًا إِلَىٰ حِينٍ", rm: "Illā raḥmatam-minnā wa matā'an ilā ḥīn", tr: "Melainkan dengan rahmat dari Kami dan kesenangan hingga ke suatu masa (yang ditetapkan)." },
+  { ar: "وَإِذَا قِيلَ لَهُمُ ٱتَّقُواْ مَا بَيۡنَ أَيۡدِيكُمۡ وَمَا خَلۡفَكُمۡ لَعَلَّكُمۡ تُرۡحَمُونَ", rm: "Wa idhā qīla lahumut-taqū mā baina aidīkum wa mā khalfakum la'allakum turḥamūn", tr: "Dan apabila dikatakan kepada mereka: Takutilah (azab Allah yang akan datang) di hadapan kamu dan yang di belakang kamu, supaya kamu beroleh rahmat (Allah)," },
+  { ar: "وَمَا تَأۡتِيهِم مِّنۡ ءَايَةٍ مِّنۡ ءَايَٰتِ رَبِّهِمۡ إِلَّا كَانُواْ عَنۡهَا مُعۡرِضِينَ", rm: "Wa mā ta'tīhim min āyatim-min āyāti Rabbihim illā kānū 'anhā mu'riḍīn", tr: "Dan tiadalah datang kepada mereka suatu keterangan dari keterangan-keterangan Tuhan mereka, melainkan mereka selalu berpaling daripadanya." },
+  { ar: "وَإِذَا قِيلَ لَهُمۡ أَنفِقُواْ مِمَّا رَزَقَكُمُ ٱللَّهُ قَالَ ٱلَّذِينَ كَفَرُواْ لِلَّذِينَ ءَامَنُوٓاْ أَنُطۡعِمُ مَن لَّوۡ يَشَآءُ ٱللَّهُ أَطۡعَمَهُۥٓ إِنۡ أَنتُمۡ إِلَّا فِي ضَلَٰلٍۢ مُّبِينٍ", rm: "Wa idhā qīla lahum anfiqū mimmā razaqakumullāhu, qālalladhīna kafarū lilladhīna āmanū a-nuṭ'imu man lau yashā'ullāhu aṭ'amah, in antum illā fī ḍalālim-mubīn", tr: "Dan apabila dikatakan kepada mereka: Belanjakanlah (pada jalan kebajikan) sebahagian daripada rezeki yang dikurniakan Allah kepada kamu, orang-orang yang kafir berkata kepada orang-orang yang beriman: Patutkah kami memberi makan kepada orang yang kalau Allah kehendaki tentulah Ia memberi makan kepadanya? Sesungguhnya kamu tidak lain hanyalah berada dalam kesesatan yang nyata." },
+  { ar: "وَيَقُولُونَ مَتَىٰ هَٰذَا ٱلۡوَعۡدُ إِن كُنتُمۡ صَٰدِقِينَ", rm: "Wa yaqūlūna matā hādhal-wa'du in kuntum ṣādiqīn", tr: "Dan mereka berkata: Bilakah datangnya janji (azab) itu jika betul kamu orang-orang yang benar?" },
+  { ar: "مَا يَنظُرُونَ إِلَّا صَيۡحَةٗ وَٰحِدَةٗ تَأۡخُذُهُمۡ وَهُمۡ يَخِصِّمُونَ", rm: "Mā yanẓurūna illā ṣaiḥataw-wāḥidatan ta'khudhuhum wa hum yakhiṣṣimūn", tr: "Tidaklah mereka menunggu melainkan satu jeritan yang akan membinasakan mereka ketika mereka sedang bertengkar." },
+  { ar: "فَلَا يَسۡتَطِيعُونَ تَوۡصِيَةٗ وَلَآ إِلَىٰٓ أَهۡلِهِمۡ يَرۡجِعُونَ", rm: "Falā yastaṭī'ūna tauṣiyataw-wa lā ilā ahlihim yarji'ūn", tr: "Maka mereka tidak dapat berwasiat apa-apa dan tidak pula dapat kembali kepada keluarga mereka." },
+  { ar: "وَنُفِخَ فِي ٱلصُّورِ فَإِذَا هُم مِّنَ ٱلۡأَجۡدَاثِ إِلَىٰ رَبِّهِمۡ يَنسِلُونَ", rm: "Wa nufikha fiṣ-ṣūri fa-idhā hum minal-ajdāthi ilā Rabbihim yansilūn", tr: "Dan ditiup sangkakala, maka dengan serta-merta mereka keluar dari kubur-kubur menuju kepada Tuhan mereka." },
+  { ar: "قَالُواْ يَٰوَيۡلَنَا مَنۢ بَعَثَنَا مِن مَّرۡقَدِنَاۜۗ هَٰذَا مَا وَعَدَ ٱلرَّحۡمَٰنُ وَصَدَقَ ٱلۡمُرۡسَلُونَ", rm: "Qālū yā wailanā mam-ba'athanā mim-marqadinā, hādhā mā wa'adar-Raḥmānu wa ṣadaqal-mursalūn", tr: "Mereka berkata: Aduhai! Siapakah yang membangkitkan kami dari tempat tidur kami? Ini adalah apa yang telah dijanjikan oleh Allah Yang Maha Pemurah dan Rasul-rasul-Nya telah berkata benar." },
+  { ar: "إِن كَانَتۡ إِلَّا صَيۡحَةٗ وَٰحِدَةٗ فَإِذَا هُمۡ جَمِيعٌ لَّدَيۡنَا مُحۡضَرُونَ", rm: "In kānat illā ṣaiḥataw-wāḥidatan fa-idhā hum jamī'ul-ladainā muḥḍarūn", tr: "Ia tidak lain hanyalah satu jeritan sahaja, maka dengan serta-merta mereka semua pun dihadapkan kepada Kami." },
+  { ar: "فَٱلۡيَوۡمَ لَا تُظۡلَمُ نَفۡسٌ شَيۡـٔٗا وَلَا تُجۡزَوۡنَ إِلَّا مَا كُنتُمۡ تَعۡمَلُونَ", rm: "Fal-yauma lā tuẓlamu nafsun shai'aw-wa lā tujzauna illā mā kuntum ta'malūn", tr: "Maka pada hari ini tidak ada seorang jiwa pun yang dizalimi sedikit pun; dan kamu tidak akan dibalas melainkan menurut apa yang kamu telah kerjakan." },
+  { ar: "إِنَّ أَصۡحَٰبَ ٱلۡجَنَّةِ ٱلۡيَوۡمَ فِي شُغُلٍۢ فَٰكِهُونَ", rm: "Inna aṣḥābal-jannatil-yauma fī shughlin fākihūn", tr: "Sesungguhnya ahli-ahli Syurga pada hari ini bersenang-senang dalam pekerjaan (keseronokan) mereka." },
+  { ar: "هُمۡ وَأَزۡوَٰجُهُمۡ فِي ظِلَٰلٍ عَلَى ٱلۡأَرَآئِكِ مُتَّكِـُٔونَ", rm: "Hum wa azwājuhum fī ẓilālin 'alal-arā'iki muttaki'ūn", tr: "Mereka dan pasangan-pasangan mereka berada dalam tempat yang teduh, bersandar di atas pelamin-pelamin." },
+  { ar: "لَهُمۡ فِيهَا فَٰكِهَةٌ وَلَهُم مَّا يَدَّعُونَ", rm: "Lahum fīhā fākihatuw-wa lahum mā yadda'ūn", tr: "Mereka mendapat buah-buahan di dalamnya dan mereka mendapat apa sahaja yang mereka ingini." },
+  { ar: "سَلَٰمٌ قَوۡلٗا مِّن رَّبٍّۢ رَّحِيمٍ", rm: "Salāmun qaulam-mir-Rabbir-Raḥīm", tr: "(Mereka dilimpahi) salam sejahtera, sebagai ucapan dari Tuhan Yang Maha Mengasihani." },
+  { ar: "وَٱمۡتَٰزُواْ ٱلۡيَوۡمَ أَيُّهَا ٱلۡمُجۡرِمُونَ", rm: "Wamtāzul-yauma ayyuhal-mujrimūn", tr: "Dan (Allah berfirman): Pisahkanlah diri kamu (dari orang-orang beriman) pada hari ini, wahai orang-orang yang berdosa." },
+  { ar: "أَلَمۡ أَعۡهَدۡ إِلَيۡكُمۡ يَٰبَنِيٓ ءَادَمَ أَن لَّا تَعۡبُدُواْ ٱلشَّيۡطَٰنَۖ إِنَّهُۥ لَكُمۡ عَدُوٌّ مُّبِينٌ", rm: "Alam a'had ilaikum yā banī Ādama al-lā ta'budusy-shayṭān, innahū lakum 'aduwwum-mubīn", tr: "Bukankah Aku telah berpesan kepada kamu wahai anak-anak Adam: Janganlah kamu menyembah Syaitan; sesungguhnya dia adalah musuh yang nyata bagi kamu;" },
+  { ar: "وَأَنِ ٱعۡبُدُونِيۚ هَٰذَا صِرَٰطٌ مُّسۡتَقِيمٌ", rm: "Wa ani'budūnī, hādhā ṣirāṭum-mustaqīm", tr: "Dan hendaklah kamu menyembah Aku; inilah jalan yang lurus?" },
+  { ar: "وَلَقَدۡ أَضَلَّ مِنكُمۡ جِبِلّٗا كَثِيرًاۖ أَفَلَمۡ تَكُونُواْ تَعۡقِلُونَ", rm: "Wa laqad aḍalla minkum jibillān kathīrā, afalam takūnū ta'qilūn", tr: "Dan demi sesungguhnya, ia telah menyesatkan sebahagian besar dari kamu; maka apakah kamu tidak berakal?" },
+  { ar: "هَٰذِهِۦ جَهَنَّمُ ٱلَّتِي كُنتُمۡ تُوعَدُونَ", rm: "Hādhihī jahannamullatī kuntum tū'adūn", tr: "Inilah neraka Jahannam yang telah dijanjikan kepada kamu." },
+  { ar: "ٱصۡلَوۡهَا ٱلۡيَوۡمَ بِمَا كُنتُمۡ تَكۡفُرُونَ", rm: "Iṣlauhal-yauma bimā kuntum takfurūn", tr: "Masuklah ke dalamnya pada hari ini kerana kamu dahulu ingkar (kepada Allah)." },
+  { ar: "ٱلۡيَوۡمَ نَخۡتِمُ عَلَىٰٓ أَفۡوَٰهِهِمۡ وَتُكَلِّمُنَآ أَيۡدِيهِمۡ وَتَشۡهَدُ أَرۡجُلُهُم بِمَا كَانُواْ يَكۡسِبُونَ", rm: "Al-yauma nakhtimu 'alā afwāhihim wa tukallimunā aidīhim wa tash-hadu arjuluhum bimā kānū yaksibūn", tr: "Pada hari ini Kami cop mulut mereka; tangan mereka akan berkata-kata kepada Kami dan kaki mereka akan menjadi saksi terhadap apa yang mereka dahulu kerjakan." },
+  { ar: "وَلَوۡ نَشَآءُ لَطَمَسۡنَا عَلَىٰٓ أَعۡيُنِهِمۡ فَٱسۡتَبَقُواْ ٱلصِّرَٰطَ فَأَنَّىٰ يُبۡصِرُونَ", rm: "Wa lau nashā'u laṭamasnā 'alā a'yunihim fastabaquṣ-ṣirāṭa fa-annā yubṣirūn", tr: "Dan kalau Kami kehendaki, tentulah Kami hapuskan penglihatan mereka, maka mereka tergesa-gesa mencari jalan; maka bagaimanakah mereka dapat melihat?" },
+  { ar: "وَلَوۡ نَشَآءُ لَمَسَخۡنَٰهُمۡ عَلَىٰ مَكَانَتِهِمۡ فَمَا ٱسۡتَطَٰعُواْ مُضِيًّا وَلَا يَرۡجِعُونَ", rm: "Wa lau nashā'u lamasakhnahum 'alā makānatihim famastāṭa'ū muḍiyyal-wa lā yarji'ūn", tr: "Dan kalau Kami kehendaki, tentulah Kami ubah bentuk mereka di tempat mereka berada (menjadi batu atau sebagainya), maka mereka tidak dapat pergi ke mana-mana dan tidak pula dapat kembali." },
+  { ar: "وَمَن نُّعَمِّرۡهُ نُنَكِّسۡهُ فِي ٱلۡخَلۡقِۚ أَفَلَا يَعۡقِلُونَ", rm: "Wa man nu'ammirhu nunakkishu fil-khalq, afalā ya'qilūn", tr: "Dan sesiapa yang Kami panjangkan umurnya, Kami jadikan dia lemah (dengan tua) dalam keadaan fizikalnya; maka apakah mereka tidak mahu memahaminya?" },
+  { ar: "وَمَا عَلَّمۡنَٰهُ ٱلشِّعۡرَ وَمَا يَنۢبَغِي لَهُۥٓۚ إِنۡ هُوَ إِلَّا ذِكۡرٌ وَقُرۡءَانٌ مُّبِينٌ", rm: "Wa mā 'allamnāhush-shi'ra wa mā yanbaghī lah, in huwa illā dhikruw-wa Qur'ānum-mubīn", tr: "Dan Kami tidak mengajarkan syair kepadanya (Muhammad) dan tidak pula hal itu patut baginya; tiadalah ia (Al-Quran itu) melainkan peringatan dan Al-Quran yang nyata." },
+  { ar: "لِيُنذِرَ مَن كَانَ حَيًّا وَيَحِقَّ ٱلۡقَوۡلُ عَلَى ٱلۡكَٰفِرِينَ", rm: "Liyundhira man kāna ḥayyaw-wa yaḥiqqal-qaulu 'alal-kāfirīn", tr: "Supaya ia (Al-Quran) memberi peringatan kepada orang yang hidup (hatinya) dan supaya tetap hukuman seksa terhadap orang-orang yang kafir." },
+  { ar: "أَوَلَمۡ يَرَوۡاْ أَنَّا خَلَقۡنَا لَهُم مِّمَّا عَمِلَتۡ أَيۡدِينَآ أَنۡعَٰمٗا فَهُمۡ لَهَا مَٰلِكُونَ", rm: "Awalam yarau annā khalaqnā lahum mimmā 'amilat aidīnā an'āman fahum lahā mālikūn", tr: "Apakah mereka tidak melihat bahawasanya Kami telah menciptakan untuk mereka - di antara apa yang Kami kerjakan - binatang-binatang ternak, maka mereka memilikinya?" },
+  { ar: "وَذَلَّلۡنَٰهَا لَهُمۡ فَمِنۡهَا رَكُوبُهُمۡ وَمِنۡهَا يَأۡكُلُونَ", rm: "Wa dhallalnāhā lahum faminhā rakūbuhum wa minhā ya'kulūn", tr: "Dan Kami jinakkan binatang-binatang itu untuk mereka; maka sebahagiannya menjadi tunggangan mereka dan sebahagian lagi mereka makan." },
+  { ar: "وَلَهُمۡ فِيهَا مَنَٰفِعُ وَمَشَارِبُۖ أَفَلَا يَشۡكُرُونَ", rm: "Wa lahum fīhā manāfi'u wa mashārib, afalā yashkurūn", tr: "Dan mereka mendapat manfaat-manfaat lain daripadanya dan minuman; maka mengapakah mereka tidak bersyukur?" },
+  { ar: "وَٱتَّخَذُواْ مِن دُونِ ٱللَّهِ ءَالِهَةٗ لَّعَلَّهُمۡ يُنصَرُونَ", rm: "Wattakhadhū min dūnillāhi ālihatal-la'allahum yunṣarūn", tr: "Dan mereka mengambil tuhan-tuhan selain Allah, dengan harapan agar mereka ditolong." },
+  { ar: "لَا يَسۡتَطِيعُونَ نَصۡرَهُمۡ وَهُمۡ لَهُمۡ جُندٌ مُّحۡضَرُونَ", rm: "Lā yastaṭī'ūna naṣrahum wa hum lahum jundum-muḥḍarūn", tr: "Tuhan-tuhan itu tidak dapat menolong mereka, padahal mereka adalah tentera yang sedia dihadapkan untuk membela tuhan-tuhan itu." },
+  { ar: "فَلَا يَحۡزُنكَ قَوۡلُهُمۡۘ إِنَّا نَعۡلَمُ مَا يُسِرُّونَ وَمَا يُعۡلِنُونَ", rm: "Falā yaḥzunka qauluhum, innā na'lamu mā yusirrūna wa mā yu'linūn", tr: "Maka janganlah percakapan mereka menyedihkan hati engkau; sesungguhnya Kami mengetahui apa yang mereka rahsiakan dan apa yang mereka nyatakan." },
+  { ar: "أَوَلَمۡ يَرَ ٱلۡإِنسَٰنُ أَنَّا خَلَقۡنَٰهُ مِن نُّطۡفَةٍۢ فَإِذَا هُوَ خَصِيمٌ مُّبِينٌ", rm: "Awalam yaral-insānu annā khalaqnāhu min nuṭfatin fa-idhā huwa khaṣīmum-mubīn", tr: "Apakah manusia tidak melihat bahawasanya Kami telah menciptakannya dari setitik air mani; maka tiba-tiba ia menjadi penentang yang nyata?" },
+  { ar: "وَضَرَبَ لَنَا مَثَلٗا وَنَسِيَ خَلۡقَهُۥۖ قَالَ مَن يُحۡيِ ٱلۡعِظَٰمَ وَهِيَ رَمِيمٌ", rm: "Wa ḍaraba lanā mathalal-wa nasiya khalqah, qāla may-yuḥyil-'iẓāma wa hiya ramīm", tr: "Dan ia membuat perbandingan bagi Kami, sedang dia lupa akan asal-usul kejadiannya; dia berkata: Siapakah yang dapat menghidupkan tulang-belulang yang telah hancur luluh ini?" },
+  { ar: "قُلۡ يُحۡيِيهَا ٱلَّذِيٓ أَنشَأَهَآ أَوَّلَ مَرَّةٍۢۖ وَهُوَ بِكُلِّ خَلۡقٍ عَلِيمٌ", rm: "Qul yuḥyīhalladhī ansha'ahā awwala marrah, wa huwa bikulli khalqin 'alīm", tr: "Katakanlah: Ia akan dihidupkan oleh Allah yang telah menciptakannya pada kali pertama dan Ia Maha Mengetahui setiap makhluk ciptaan-Nya." },
+  { ar: "ٱلَّذِي جَعَلَ لَكُم مِّنَ ٱلشَّجَرِ ٱلۡأَخۡضَرِ نَارٗا فَإِذَآ أَنتُم مِّنۡهُ تُوقِدُونَ", rm: "Alladhī ja'ala lakum minash-shajaril-akhḍari nāran fa-idhā antum minhu tūqidūn", tr: "Yang telah menjadikan untuk kamu api dari kayu yang hijau, maka tiba-tiba kamu daripadanya menyalakan api." },
+  { ar: "أَوَلَيۡسَ ٱلَّذِي خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بِقَٰدِرٍ عَلَىٰٓ أَن يَخۡلُقَ مِثۡلَهُمۚ بَلَىٰ وَهُوَ ٱلۡخَلَّٰقُ ٱلۡعَلِيمُ", rm: "Awa laisalladhī khalaqas-samāwāti wal-arḍa biqādirin 'alā ay-yakhluqa mithlahum, balā wa huwal-Khallāqul-'Alīm", tr: "Bukankah Tuhan yang menciptakan langit dan bumi itu berkuasa untuk menciptakan yang seperti mereka? Bahkan (sudah tentu ia berkuasa), dan Ia adalah Maha Pencipta, lagi Maha Mengetahui." },
+  { ar: "إِنَّمَآ أَمۡرُهُۥٓ إِذَآ أَرَادَ شَيۡـًٔا أَن يَقُولَ لَهُۥ كُن فَيَكُونُ", rm: "Innamā amruhū idhā arāda shai'an ay-yaqūla lahu kun fa-yakūn", tr: "Sesungguhnya urusan-Nya apabila Ia menghendaki sesuatu hanyalah Ia berkata kepadanya: Jadilah! Maka jadilah ia." },
+  { ar: "فَسُبۡحَٰنَ ٱلَّذِي بِيَدِهِۦ مَلَكُوتُ كُلِّ شَيۡءٍۢ وَإِلَيۡهِ تُرۡجَعُونَ", rm: "Fa subḥānalladhī biyadihī malakūtu kulli shai'iw-wa ilaihi turja'ūn", tr: "Maka akuilah kesucian Allah — Tuhan yang memiliki dan menguasai tiap-tiap sesuatu, dan kepada-Nyalah kamu semua dikembalikan." }
+];
+
+// ── STATE ──
+let showRumi = false;
+let bookmarks = new Set();
+let currentTab = 'yasin';
+
+// ── RENDER ──
+function render() {
+  const list = document.getElementById('ayatList');
+  document.getElementById('loading').style.display = 'none';
+  list.innerHTML = '';
+  yasin.forEach((a, i) => {
+    const num = i + 1;
+    const bk = bookmarks.has(num);
+    const div = document.createElement('div');
+    div.className = 'ayat-card';
+    div.style.animationDelay = Math.min(i * 0.02, 0.5) + 's';
+    div.id = 'ayat-' + num;
+    div.innerHTML = `
+      <div class="ayat-header">
+        <div class="ayat-num">${num}</div>
+        <button class="ayat-bookmark ${bk?'saved':''}" onclick="toggleBookmark(${num})" title="Penanda">${bk?'★':'☆'}</button>
+      </div>
+      <div class="ayat-arabic">${a.ar} ﴿${toArabicNum(num)}﴾</div>
+      <div class="ayat-rumi ${showRumi?'':'hidden'}">${a.rm}</div>
+      <div class="ayat-trans">${a.tr}</div>
+    `;
+    list.appendChild(div);
+  });
+}
+
+function toArabicNum(n) {
+  return n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+}
+
+function toggleRumi() {
+  showRumi = !showRumi;
+  document.getElementById('rumiToggle').classList.toggle('active', showRumi);
+  document.querySelectorAll('.ayat-rumi').forEach(el => el.classList.toggle('hidden', !showRumi));
+}
+
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+  document.getElementById('themeToggle').textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀';
+}
+
+function toggleBookmark(num) {
+  if (bookmarks.has(num)) bookmarks.delete(num);
+  else bookmarks.add(num);
+  const card = document.getElementById('ayat-' + num);
+  const btn = card.querySelector('.ayat-bookmark');
+  btn.classList.toggle('saved', bookmarks.has(num));
+  btn.textContent = bookmarks.has(num) ? '★' : '☆';
+  card.classList.toggle('highlight', bookmarks.has(num));
+}
+
+function showTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', (i===0&&tab==='yasin')||(i===1&&tab==='doa')));
+  document.getElementById('ayatList').style.display = tab === 'yasin' ? 'block' : 'none';
+  document.getElementById('doaSection').classList.toggle('active', tab === 'doa');
+}
+
+function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+// ── SCROLL EFFECTS ──
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('jumpTop').classList.toggle('visible', h.scrollTop > 300);
+});
+
+// ── INIT ──
+render();
+
+// ── SERVICE WORKER ──
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+</script>
+</body>
+</html>
