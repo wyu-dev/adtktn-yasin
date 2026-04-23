@@ -1,4 +1,4 @@
-const CACHE = 'yasin-adtec-v2';
+const CACHE = 'yasin-adtec-v3';
 const ASSETS = [
   './',
   './index.html',
